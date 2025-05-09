@@ -1,0 +1,149 @@
+
+//8 data type in javascript
+//Number (int)
+//String (String)
+//BigInt (BigInt ဆိုတာ JavaScript ထဲမှာ အလွန်ကြီးတဲ့ integer (ကိန်းပြည့်) တန်ဖိုးတွေကို ကိုင်တွယ်နိုင်ဖို့ ECMAScript 2020 (ES11) မှာ မိတ်ဆက်ထားတဲ့ data type တစ်ခုပါ။
+
+BigInt ကဘာလုပ်ပေးသလဲ?
+JavaScript ရဲ့ Number type က 2^53 - 1 (ဒါက 9007199254740991) ထိပဲ စွမ်းဆောင်နိုင်ပါတယ်။ အဲ့ထက်ကြီးတဲ့ ကိန်းတွေကို loss မရှိဘဲသိမ်းဖို့ BigInt ကအသုံးဝင်ပါတယ်။
+
+
+၁။ n တစ်လုံးနဲ့အဆုံးမှာရေးခြင်း:
+
+const bigNumber = 1234567890123456789012345678901234567890n;
+
+၂။ BigInt() constructor ကိုသုံးခြင်း:
+
+const bigNumber = BigInt("1234567890123456789012345678901234567890");
+---
+
+BigInt နဲ့ပတ်သက်တဲ့ သတိပြုရမယ့်အချက်များ:
+
+BigInt နဲ့ Number ကို direct addition, comparison လုပ်မရဘူး (TypeError ဖြစ်တတ်တယ်):
+
+const a = 10n;
+const b = 10;
+console.log(a + BigInt(b)); // OK
+console.log(Number(a) + b); // Ok
+---
+
+အသုံးအများဆုံး Use Case
+ငွေကြေးထဲက အတိအကျသိမ်းဖို့
+Blockchain, cryptography ကဲ့သို့သော နယ်ပယ်တွေမှာ အကြီးမားဆုံးသော integer တွေနဲ့ အလုပ်လုပ်ရာမှာ
+----------------------------------------------------------------------------------------------------------------------------
+
+
+//Boolean
+Boolean ဆိုတာ JavaScript ထဲမှာ true နဲ့ false ဆိုတဲ့ နှစ်ခုတည်းသော တန်ဖိုး သာရှိတဲ့ primitive data type တစ်ခုပါ။ 
+ဒါကို decision making (if, while, for, etc.) တွေမှာ အဓိကအသုံးပြုပါတယ်။
+
+--
+Boolean ကိုသုံးတဲ့ နည်းလမ်း ၃ မျိုး
+
+၁။ တန်းတန်းရေးသားခြင်း
+
+let isAvailable = true;
+let isDone = false;
+
+၂။ Boolean constructor သုံးခြင်း
+
+let result = Boolean(5); // true
+let empty = Boolean(0);  // false
+
+၃။ Condition expression ထဲမှာ
+
+let age = 20;
+if (age > 18) {
+  console.log("Adult");
+} else {
+  console.log("Child");
+}
+
+
+---
+
+Falsy Values (Boolean မှာ false ဖြစ်မယ့် တန်ဖိုးများ)
+
+အောက်ပါအရာတွေက Boolean context ထဲမှာ false ဖြစ်ပါတယ်—
+
+false, 0, "" (empty string), null, undefined,NaN
+
+တခြားသော value များ (e.g. "hello", 1, [], {}) တို့ကတော့ true ဖြစ်တတ်ပါတယ်။
+
+ဥပမာ
+value ma pr yin false
+Boolean("")         // false
+Boolean("hello")    // true
+Boolean(0)          // false
+Boolean(123)        // true
+----------------------------------------------------------------------------------------------------------------------------
+
+//Undefined
+undefined ဆိုတာ JavaScript မှာရှိတဲ့ primitive data type တစ်ခုဖြစ်ပြီး၊ variable တစ်ခုကို တန်ဖိုးမသတ်မှတ်ရသေးတဲ့အခါ 
+ကိုယ့်အလိုအလျှောက် ပေးသွားတဲ့တန်ဖိုးတစ်ခုပါ။
+
+၁။ Variable မသတ်မှတ်ခင် (default value)
+
+let a;
+console.log(a); // undefined
+---
+
+၂။ Function က return မရေးဘူးဆိုရင်
+
+function sayHi() {
+  console.log("Hi");
+}
+
+let result = sayHi(); 
+console.log(result); // undefined
+
+---
+
+၃။ Object မှာ မရှိတဲ့ property ကိုခေါ်ရင်
+
+let person = { name: "John" };
+console.log(person.age); // undefined
+
+---
+
+၄။ Array မှာ မရှိတဲ့ index
+
+let arr = [10, 20];
+console.log(arr[5]); // undefined
+
+----------------------------------------------------------------------------------------------------------------------------
+Object
+const person = {
+    name: "John",
+    age: 30,
+    Student: false
+  };
+  
+  name, age, Student က keys
+  
+  "John", 30, false က values
+  ---
+  console.log(person.name);     // dot notation => "John"
+  console.log(person["age"]);  // bracket notation => 30
+
+  ---
+  
+  Object ကိုဖန်တီးတဲ့နည်းလမ်းများ
+  
+  ၁။ Object literal
+  const car = { brand: "Toyota", year: 2022 };
+  
+
+  ၂။ Using new Object()
+  const car = new Object();
+  car.brand = "Toyota";
+  
+  ၃။ Constructor function / Class
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  Person("Alice", 25);
+  --------------------------------------------------------------------------------------
+//Symbol
+//Null
